@@ -119,5 +119,8 @@ bgr2_path='30_bgr.png'
 res=backReplace(relit_path,src1_path,bgr1_path,src2_path,bgr2_path)
 cv2.imwrite(os.path.join(saveFolder, f'{img_name}_replace.jpg'), res)
 
+
+# python .\relight.py --source_image src.png --light_image 30.png --face_detect light 
+
 #cv2.imwrite(os.path.join(saveFolder, f'{img_name}_L_channel.jpg'), outputImg)
 #----------------------------------------------

@@ -49,6 +49,7 @@ def backReplace(src1_relit, src1, bgr1, src2, bgr2):
     src = to_tensor(src).cuda().unsqueeze(0)
     src_relit = to_tensor(src_relit).cuda().unsqueeze(0)
     bgr = to_tensor(bgr).cuda().unsqueeze(0)
+    bgr_img = to_tensor(bgr_img).cuda().unsqueeze(0)
 
     if src.size(2) <= 2048 and src.size(3) <= 2048:
         model.backbone_scale = 1/4
@@ -61,7 +62,6 @@ def backReplace(src1_relit, src1, bgr1, src2, bgr2):
     com = pha * fgr + (1 - pha) * torch.tensor([0, 0, 0], device='cuda').view(1, 3, 1, 1)
     matted_img=to_pil_image(com[0].cpu())
     # com = pha * fgr + (1 - pha) * torch.tensor([120/255, 255/255, 155/255], device='cuda').view(1, 3, 1, 1)
-    bgr_img = to_tensor(bgr_img).cuda().unsqueeze(0)
     com = pha * src_relit + (1 - pha) * bgr_img.clone().detach()
     # com = pha * src_relit + (1 - pha) * torch.tensor(bgr_img, device='cuda')
     # to_pil_image(com[0].cpu()).save('res.png')
