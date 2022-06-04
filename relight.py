@@ -15,6 +15,7 @@ import os
 import numpy as np
 
 from torch.autograd import Variable
+from backgroundReplacement import backReplace
 import torch
 import cv2
 import argparse
@@ -106,5 +107,17 @@ if (ARGS.face_detect == 'both'):
 if (ARGS.face_detect == 'light'):
     img_name += "_faceDetectLight"
 cv2.imwrite(os.path.join(saveFolder, f'{img_name}_relit.jpg'), resultLab)
+
+print(os.path.join(saveFolder, f'{img_name}_relit.jpg'))
+relit_path=os.path.join(saveFolder, f'{img_name}_relit.jpg')
+# src1_path=f'data/test/images/{ARGS.source_image}'
+# src2_path=f'data/test/images/{ARGS.light_image}'
+src1_path=f'{ARGS.source_image}'
+src2_path=f'{ARGS.light_image}'
+bgr1_path='bgr.png'
+bgr2_path='30_bgr.png'
+res=backReplace(relit_path,src1_path,bgr1_path,src2_path,bgr2_path)
+cv2.imwrite(os.path.join(saveFolder, f'{img_name}_replace.jpg'), res)
+
 #cv2.imwrite(os.path.join(saveFolder, f'{img_name}_L_channel.jpg'), outputImg)
 #----------------------------------------------
