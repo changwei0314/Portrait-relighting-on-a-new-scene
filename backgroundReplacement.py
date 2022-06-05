@@ -22,8 +22,14 @@ def backReplace(src1_relit, src1, bgr1, src2, bgr2):
     # print(os.path.dirname(os.path.abspath(__file__)))
 
     src = Image.open(src1)
+    src = src.resize((204,204))
+
     src_relit = Image.open(src1_relit)
+    src_relit = src_relit.resize((204,204))
+
     bgr = Image.open(bgr1)
+    bgr = bgr.resize((204,204))
+
     bgr_img = Image.open(bgr2)
     bgr_img=bgr_img.resize(bgr.size)
     src__ =cv2.imread(src1)
@@ -53,7 +59,7 @@ def backReplace(src1_relit, src1, bgr1, src2, bgr2):
 
     if src.size(2) <= 2048 and src.size(3) <= 2048:
         model.backbone_scale = 1/4
-        model.refine_sample_pixels = 80_000
+        model.refine_sample_pixels = 1260
     else:
         model.backbone_scale = 1/8
         model.refine_sample_pixels = 320_000
