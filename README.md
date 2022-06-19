@@ -10,6 +10,6 @@
 
 ### Usage 
 * Note： all input images must store in data\test\images, you can check results in result\trained  
-`python relight.py --source_image [src_image] --light_image [target_image] --srcBG [src_background_image] --lightBG [target_background_image]`
-  ex：`python relight.py --source_image [src.jpg] --light_image [target_light.jpg] --srcBG [src_bgr.jpg] --lightBG [target_bgr.jpg]`
+`python relight.py --source_image [src_image] --light_image [target_image] --srcBG [src_background_image] --lightBG [target_background_image]`  
+  ex：`python relight.py --source_image src.jpg --light_image target_light.jpg --srcBG src_bgr.jpg --lightBG target_bgr.jpg`
 
